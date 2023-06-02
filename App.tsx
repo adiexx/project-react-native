@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, Alert, StyleSheet } from 'react-native';
+import 'react-native-gesture-handler';
+import { View, TouchableOpacity, Text, Alert, StyleSheet, StatusBar} from 'react-native';
+
+
+
 
 const ConfirmationButton: React.FC = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
-
+  
   const handleConfirmation = () => {
     setShowConfirmation(true);
   };
+  function conf() {
+    Alert.alert('* tela de configuração *');
+  }
 
   const handleConfirmationResponse = (response: boolean) => {
     setShowConfirmation(false);
     if (response) {
       // Ação a ser executada quando a resposta for "sim"
-      Alert.alert('Ação confirmada!');
+      Alert.alert('Ação Confirmada!');
     } else {
       // Ação a ser executada quando a resposta for "não"
       Alert.alert('Ação cancelada!');
@@ -20,16 +27,26 @@ const ConfirmationButton: React.FC = () => {
   };
 
   return (
-
-
+    
+    
+    <View style={styles.container1}>
+     
+    <TouchableOpacity style={styles.buttonconf} onPress={conf}>
+  
+      <Text style={styles.buttonconfText}>conf</Text>
+      </TouchableOpacity>
     <View style={styles.container}>
+
+     
+      
       <TouchableOpacity style={styles.button} onPress={handleConfirmation}>
         <Text style={styles.buttonText}>SOS</Text>
       </TouchableOpacity>
-
+  
       {showConfirmation && (
 
         <View style={styles.confirmationContainer}>
+          <Text style={styles.conftext}>Tem certeza?</Text>
           <TouchableOpacity style={styles.confirmationButton} onPress={() => handleConfirmationResponse(true)}>
             <Text style={styles.confirmationButtonText}>Sim</Text>
           </TouchableOpacity>
@@ -38,9 +55,17 @@ const ConfirmationButton: React.FC = () => {
           </TouchableOpacity>
         </View>
       )}
+
+
+
     </View>
+    </View>
+  
   );
+
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +75,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  container1: {
+    zIndex: 0,
+    marginTop: 10,
+    position: 'relative',
+    flex: 1,
+    
   },
  
   button: {
@@ -61,21 +93,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: 24,
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  conftext: {
+    
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'red',
+  },
+  buttonconfText: {
+    fontSize: 10,
     fontWeight: 'bold',
     color: 'white',
   },
   confirmationContainer: {
-    zIndex: 0,
+    paddingVertical: 75,
+    borderRadius: 10,
+    width: 200,
+    height: 200,
+    backgroundColor: 'white',
+    position: 'absolute',
+    zIndex: 1,
     flexDirection: 'row',
-    marginTop: 20,
+    justifyContent: 'center',
   },
   confirmationButton: {
+  
+    width: 80,
+    height: 50,
+    justifyContent: 'center',
     marginBottom: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    alignItems: 'center',
     backgroundColor: 'gray',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   confirmationButtonText: {
     fontSize: 18,
@@ -85,6 +137,18 @@ const styles = StyleSheet.create({
   secondButton: {
     marginLeft: 10,
   },
+  buttonconf: {
+    zIndex: 1,
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+  }
 });
 
 export default ConfirmationButton;
+
