@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, Text, Alert, StyleSheet, StatusBar} from 'react-native';
-
+import { View, Image, TouchableOpacity, Text, Alert, StyleSheet, StatusBar} from 'react-native';
 
 
 const ConfirmationButton: React.FC = () => {
@@ -32,7 +31,9 @@ const ConfirmationButton: React.FC = () => {
      
     <TouchableOpacity style={styles.buttonconf} onPress={conf}>
   
-      <Text style={styles.buttonconfText}>conf</Text>
+      <Image style={styles.imageconf}
+      source={{uri:'https://img.icons8.com/ios-filled/50/settings.png' }} />
+   
       </TouchableOpacity>
     <View style={styles.container}>
 
@@ -47,15 +48,15 @@ const ConfirmationButton: React.FC = () => {
         <View style={styles.confirmatioprinc}>
 
           <View style={styles.confirmationContainer2}>
-          <Text style={styles.conftext}>Tem certeza?</Text>
+          <Text style={styles.conftext}>TEM CERTEZA?</Text>
           </View>
           
           <View style={styles.confirmationContainer1}>
           <TouchableOpacity style={styles.confirmationButton} onPress={() => handleConfirmationResponse(true)}>
-            <Text style={styles.confirmationButtonText}>Sim</Text>
+            <Text style={styles.confirmationButtonText}>SIM</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.confirmationButton, styles.secondButton]} onPress={() => handleConfirmationResponse(false)}>
-            <Text style={styles.confirmationButtonText}>Não</Text>
+            <Text style={styles.confirmationButtonText}>NÃO</Text>
           </TouchableOpacity>
           
           </View>
@@ -104,36 +105,33 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   conftext: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'gray',
   },
   buttonconfText: {
     fontSize: 10,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
   },
   confirmationContainer1: {
 
-    paddingHorizontal: 100,
-    paddingVertical: 50,
-    borderRadius: 10,
-    width: 40,
-    height: 40,
+    marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   confirmationContainer2: {
+    
     justifyContent: 'center',
     alignItems: 'center',
   },
   confirmatioprinc: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     paddingVertical: 75,
     borderRadius: 10,
-    width: 200,
-    height: 180,
+    width: 250,
+    height: 200,
     position: 'absolute',
     zIndex: 2,
     flexDirection: 'column',
@@ -141,11 +139,9 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   confirmationButton: {
-  
     width: 80,
     height: 50,
     justifyContent: 'center',
-    marginBottom: 10,
     alignItems: 'center',
     backgroundColor: 'gray',
     borderRadius: 10,
@@ -156,18 +152,20 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   secondButton: {
-    marginLeft: 10,
+    marginLeft: 18,
   },
   buttonconf: {
     zIndex: 1,
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 100,
-    backgroundColor: 'blue',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-
-
+  },
+  imageconf: { 
+    width: 30,
+    height: 30,
   }
 });
 
