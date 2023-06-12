@@ -4,7 +4,6 @@ import { View, TouchableOpacity, Text, Alert, StyleSheet, StatusBar} from 'react
 
 
 
-
 const ConfirmationButton: React.FC = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   
@@ -45,14 +44,21 @@ const ConfirmationButton: React.FC = () => {
   
       {showConfirmation && (
 
-        <View style={styles.confirmationContainer}>
+        <View style={styles.confirmatioprinc}>
+
+          <View style={styles.confirmationContainer2}>
           <Text style={styles.conftext}>Tem certeza?</Text>
+          </View>
+          
+          <View style={styles.confirmationContainer1}>
           <TouchableOpacity style={styles.confirmationButton} onPress={() => handleConfirmationResponse(true)}>
             <Text style={styles.confirmationButtonText}>Sim</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.confirmationButton, styles.secondButton]} onPress={() => handleConfirmationResponse(false)}>
             <Text style={styles.confirmationButtonText}>Não</Text>
           </TouchableOpacity>
+          
+          </View>
         </View>
       )}
 
@@ -98,26 +104,41 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   conftext: {
-    
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'white',
   },
   buttonconfText: {
     fontSize: 10,
     fontWeight: 'bold',
     color: 'white',
   },
-  confirmationContainer: {
+  confirmationContainer1: {
+
+    paddingHorizontal: 100,
+    paddingVertical: 50,
+    borderRadius: 10,
+    width: 40,
+    height: 40,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  confirmationContainer2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  confirmatioprinc: {
+    backgroundColor: 'green',
     paddingVertical: 75,
     borderRadius: 10,
     width: 200,
-    height: 200,
-    backgroundColor: 'white',
+    height: 180,
     position: 'absolute',
-    zIndex: 1,
-    flexDirection: 'row',
+    zIndex: 2,
+    flexDirection: 'column',
     justifyContent: 'center',
+    alignContent: 'center',
   },
   confirmationButton: {
   
